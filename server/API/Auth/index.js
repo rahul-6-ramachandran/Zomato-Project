@@ -39,11 +39,16 @@ Access      Public
 Method      POST
 */
 
-Router.get('/signin',async(req,res)=>{
+Router.post('/signin',async(req,res)=>{
     try {
+        const user =  await userModel.findByEmailAndPassword(req.body.credentials)
+
+        const token = user.getjwtToken()
+        
+        return res.status(200).json({token,status:"success"})
         
     } catch (error) {
-        
+        return res.status(500).json({error: error.message})
     }
 })
 
