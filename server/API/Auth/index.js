@@ -2,8 +2,11 @@ import express from 'express'
 
 // Models
 import { userModel } from '../../database/user'
+import passport from 'passport'
 
 const Router = express.Router()
+
+
 // ////////////////////////////////////////////////////////////////        ////////////////////////////////////////////////////////////////////////////
 /*
 Route       /signup
@@ -52,5 +55,35 @@ Router.post('/signin',async(req,res)=>{
     }
 })
 
+// ////////////////////////////////////////////////////////////////        ////////////////////////////////////////////////////////////////////////////
+
+/*
+Route       /google
+Des         google sign in
+Params      none
+Access      Public
+Method      Get
+*/
+
+Router.get('/google',passport.authenticate('google',{scope:
+    ['profile',
+    'email']
+}))
+
+// ////////////////////////////////////////////////////////////////        ////////////////////////////////////////////////////////////////////////////
+
+/*
+Route       /google/callback
+Des         google sign in callbacks
+Params      none
+Access      Public
+Method      Get
+*/
+
+Router.get('/google/callback',passport.authenticate('google',{failureRedirect:'/'}),(req,res)=>{
+    return res.json({
+        token: req.session.passport.user.token
+    })
+})
 
 export default Router
