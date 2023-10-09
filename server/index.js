@@ -19,7 +19,8 @@ const zomato = express()
 import Auth from './API/Auth'
 import Restaurant from './API/Restaurant'
 import Food from './API/Food'
-
+import Orders from './API/Orders'
+import Reviews from './API/Orders'
 
 // Application middlewares
 zomato.use(express.json())
@@ -42,6 +43,8 @@ googleAuthConfig(passport)
 zomato.use('/auth',Auth)
 zomato.use('/restaurant',Restaurant)
 zomato.use('/food',Food)
+zomato.use('/order',Orders)
+zomato.use('/review',Reviews)
 
 zomato.get('/',(req,res)=>{
     res.json({message : "Setup Success"})

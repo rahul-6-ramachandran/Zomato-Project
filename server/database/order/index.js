@@ -18,10 +18,6 @@ const orderSchema = new mongoose.Schema({
             }
         }
     ],
-    orderRatings:{
-        type:String,
-        required:true
-    }
 },{timestamps:true})
 
 export const orderModel = mongoose.model("Orders",orderSchema) 
