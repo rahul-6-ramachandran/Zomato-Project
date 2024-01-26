@@ -1,8 +1,9 @@
-import express from 'express'
+import express  from 'express'
 import passport from 'passport'
 
 // Models
 import { userModel } from '../../database/Models'
+import { validateUpdateUser, validateUser } from '../../Validation/user'
 
 const Router = express.Router()
 
@@ -16,6 +17,7 @@ Method      GET
 */
 Router.get('/:_id', async (req,res)=>{
     try {
+        await validateUser(req.params)
         const {_id} = req.params
     const getUser = await userModel.findById(_id)
     return res.json({user:getUser})
@@ -26,7 +28,7 @@ Router.get('/:_id', async (req,res)=>{
 })
 
 /*
-Route       /update
+Route       /update/id
 Des         Get User Data
 Params      _id
 Body        UserData
@@ -35,6 +37,7 @@ Method      PUT
 */
 Router.put('/update/_id', async(req,res)=>{
     try {
+        await validateUpdateUser(req.body)
         const {_id} = req.params
         const {userData} = req.body
         const updateUserData = await userModel.findByIdAndUpdate(_id,{$set:userData},{new:true})
@@ -44,3 +47,5 @@ Router.put('/update/_id', async(req,res)=>{
     }
   
 })
+
+export default Router

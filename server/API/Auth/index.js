@@ -3,6 +3,7 @@ import express from 'express'
 // Models
 import { userModel } from '../../database/user'
 import passport from 'passport'
+import { validateSignin, validateSignup } from '../../Validation/auth'
 
 const Router = express.Router()
 
@@ -17,7 +18,9 @@ Method      POST
 */
 
 Router.post('/signup',async(req,res)=>{
+    
     try {
+         await validateSignup(req.body.credentials) //  Validation code
         
         await userModel.findByEmailAndPhone(req.body.credentials)
 
@@ -44,6 +47,7 @@ Method      POST
 
 Router.post('/signin',async(req,res)=>{
     try {
+        await validateSignin(req.body.credeentials)
         const user =  await userModel.findByEmailAndPassword(req.body.credentials)
 
         const token = user.getjwtToken()

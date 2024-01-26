@@ -9,9 +9,6 @@ import passport from 'passport'
 // Configurations
 import googleAuthConfig from './config/google.config'
 
-// Database Connection
-import connectDB from './database/connection'
-
 const zomato = express()
 
 
@@ -21,6 +18,10 @@ import Restaurant from './API/Restaurant'
 import Food from './API/Food'
 import Orders from './API/Orders'
 import Reviews from './API/Orders'
+import User from './database/user'
+
+// Database Connection
+import connectDB from './database/connection'
 
 // Application middlewares
 zomato.use(express.json())
@@ -37,6 +38,7 @@ zomato.use(passport.initialize())
 zomato.use(passport.session())
 
 
+
 // passport configuration
 googleAuthConfig(passport)
 
@@ -45,6 +47,7 @@ zomato.use('/restaurant',Restaurant)
 zomato.use('/food',Food)
 zomato.use('/order',Orders)
 zomato.use('/review',Reviews)
+zomato.use('/user',User)
 
 zomato.get('/',(req,res)=>{
     res.json({message : "Setup Success"})

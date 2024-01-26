@@ -3,6 +3,7 @@ import passport from 'passport'
 
 // Models
 import { foodModel } from '../../database/food'
+import { validateId ,validateCategory} from '../../Validation/food'
 
 const Router = express.Router()
 
@@ -18,6 +19,7 @@ Method      GET
 Router.get('/r/:_id',async(req,res)=>{
     
     try {
+        await validateId(req.params)
         const {_id} = req.params
     const food = await foodModel.find({restaurant:_id})
     return res.json({food})
@@ -37,6 +39,7 @@ Method      GET
 Router.get('/r/:category',async(req,res)=>{
     
     try {
+        await validateCategory(req.params)
         const {_id} = req.params
     const food = await foodModel.find({category:{$regex:category,$option:"i"}})
     return res.json({food})

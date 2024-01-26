@@ -1,7 +1,9 @@
-import express from "express";
+import express  from 'express';
 import passport from "passport";
 
 import {orderModel, userModel } from '../../database/Models'
+import { validateId } from '../../Validation/food';
+import { validateOrderDetails } from '../../Validation/orders';
 
 const Router = express.Router()
 
@@ -15,6 +17,7 @@ Method      GET
 */
 Router.get('/:_id',async (req,res)=>{
     try {
+        await validateId(req.params)
         const {_id} = req.params
         const getOrders = await userModel.findOne({user: _id})
         if(!getOrders) {
@@ -37,6 +40,7 @@ Method      Post
 */
 Router.post('/new/:_id',async (req,res)=>{
     try {
+        await validateOrderDetails(req.body)
         const {_id} = req.params
         const {orderDetails} = req.body
         const addNewOrder = orderModel.findOneAndUpdate({user:_id},{$push:{orderDetails}},{new:true})

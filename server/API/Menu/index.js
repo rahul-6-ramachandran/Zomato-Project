@@ -3,6 +3,7 @@ import passport from 'passport'
 
 // Models
 import { menuModel,imageModel } from '../../database/Models'
+import { validateId } from '../../Validation/food'
 
 const Router = express.Router()
 
@@ -18,6 +19,7 @@ Method      GET
 
 Router.get('/list/:_id',async (req,res)=>{
     try {
+        await validateId(req.params)
         const {_id} = req.params
         const menu = await menuModel.findOne({_id})
 
@@ -39,6 +41,7 @@ Method      GET
 
 Router.get('/image/:_id',async (req,res)=>{
     try {
+        await validateId(req.params)
         const {_id} = req.params
         const menu = await imageModel.findOne({_id})
 
