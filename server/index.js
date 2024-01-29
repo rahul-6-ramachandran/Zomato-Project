@@ -8,8 +8,8 @@ import passport from 'passport'
 
 // Configurations
 import googleAuthConfig from './config/google.config'
+import routeConfig from './config/route.config'
 
-const zomato = express()
 
 
 // Microseervice Routes
@@ -18,11 +18,12 @@ import Restaurant from './API/Restaurant'
 import Food from './API/Food'
 import Orders from './API/Orders'
 import Reviews from './API/Orders'
-import User from './database/user'
+import User from './API/User'
 
 // Database Connection
 import connectDB from './database/connection'
 
+const zomato = express()
 // Application middlewares
 zomato.use(express.json())
 zomato.use(express.urlencoded({extended: false}))
@@ -40,7 +41,9 @@ zomato.use(passport.session())
 
 
 // passport configuration
+
 googleAuthConfig(passport)
+routeConfig(passport)
 
 zomato.use('/auth',Auth)
 zomato.use('/restaurant',Restaurant)
