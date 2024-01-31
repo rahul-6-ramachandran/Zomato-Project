@@ -1,4 +1,4 @@
-
+import HomeLayoutHOC from "./HOC/Home.Hoc"
 
 
 
@@ -6,7 +6,9 @@ function App() {
  
   return (
   
-     <div> </div>
+     <>
+     <HomeLayoutHOC />
+     </>
   )
 }
 
