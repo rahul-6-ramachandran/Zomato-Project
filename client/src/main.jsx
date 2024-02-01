@@ -10,6 +10,7 @@ import {
 } from "react-router-dom"
 import Temp from './Components/temp.jsx'
 import HomeLayoutHOC from './HOC/Home.Hoc.jsx'
+import Master from './Components/master.jsx'
 
 
 
@@ -18,7 +19,7 @@ const router = createBrowserRouter(
   createRoutesFromElements (
     
     <Route path="/" element={<HomeLayoutHOC/>} >
-      <Route index element={< Temp/>} />
+      <Route path='/:type' exact element={<Master/>}/>
       
     </Route>
   

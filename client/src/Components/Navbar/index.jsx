@@ -5,7 +5,7 @@ import { CiSearch } from "react-icons/ci"
 const MediumNav = () => {
     return (<>
         <div className="hidden md:flex lg:hidden gap-2">
-            <div className="w-28 p-2" >
+            <div className="w-36 p-3" >
                 <img src="https://b.zmtcdn.com/web_assets/b40b97e677bc7b2ca77c58c61db266fe1603954218.png"
                     alt="logo"
                     className="w-full h-full" />
@@ -55,8 +55,9 @@ const MobileNav = ()=>{
 }
 const LargeNav = () => {
     return (<>
+    <div className="container px-20 mx-auto">
         <div className="hidden lg:flex lg:w-3/4 gap-2 justify-between">
-            <div className="w-28 p-2" >
+            <div className="w-32 p-2" >
                 <img src="https://b.zmtcdn.com/web_assets/b40b97e677bc7b2ca77c58c61db266fe1603954218.png"
                     alt="logo"
                     className="w-full h-full" />
@@ -82,6 +83,7 @@ const LargeNav = () => {
             <div className="flex gap-3">
                 <button className="text-gray-500 hover:text-gray-800 text-xl">Login</button>
                 <button className="text-gray-500 hover:text-gray-800 text-xl">Signup</button>
+            </div>
             </div>
             </div>
         </>)
