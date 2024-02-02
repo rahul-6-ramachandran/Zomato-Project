@@ -83,11 +83,11 @@ const {type} = useParams()
  
     return(
         <>
-        <div className="hidden lg:flex gap-16 container px-20 mx-auto py-5 ">
+        <div className="hidden lg:flex gap-16 container px-20 mx-auto py-5  ">
             
             {allTypes.map((item)=>(
                 <Link to={`/${item.id}`} key={item.id}>
-                  <div className={classnames("flex items-center flex gap-3 transition duration-700 ease-in-out",{
+                  <div className={classnames("flex items-center flex gap-3 transition duration-700 ease-in-out my-4",{
                     "border-b-2 border-zomato-400 pb-4": type === item.id
                   })}>
                   <div className={`${type===item.id ? "w-16 h-16 bg-yellow-100  rounded-full p-3" : " w-16 h-16 bg-gray-100  rounded-full p-3"}`}>
