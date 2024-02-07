@@ -4,7 +4,7 @@ import Delivery from "./Delivery"
 import Dining from "./Dining"
 import NightLife from "./NightLifte"
 
-function Master() {
+function Home() {
   const {type } = useParams()
   return (
   <div className="my-5 px-30 mx-auto">
@@ -17,4 +17,4 @@ function Master() {
   )
 }
 
-export default Master
+export default Home

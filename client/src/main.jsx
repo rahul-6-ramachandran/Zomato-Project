@@ -6,35 +6,54 @@ import {
   Route,
   createBrowserRouter,
   RouterProvider,
-  createRoutesFromElements, 
+  createRoutesFromElements,
+  Navigate,
+  Routes
+
 } from "react-router-dom"
 import HomeLayoutHOC from './HOC/Home.Hoc.jsx'
 import Master from './Components/master.jsx'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import RestaurantLayoutHOC from './HOC/Restaurant.Hoc.jsx'
 
 
 
 const router = createBrowserRouter(
 
-  createRoutesFromElements (
-    
-    <Route path="/" element={<HomeLayoutHOC/>} >
-      <Route path='/:type' exact element={<Master/>}/>
-      
+  createRoutesFromElements(
+
+    <Route>
+
+
+      <Route path="/" element={<HomeLayoutHOC />} >
+        <Route
+          path="/"
+          element={<Navigate to="/Delivery" />}
+        />
+
+        <Route path='/:type' element={<Master />} />
+
+      </Route>
+      <Route path='/restaurant/:id' element={<RestaurantLayoutHOC />} />
     </Route>
-  
-    
-      
-      
 
 
-      )
-      
+
+
+
+
+
+
+
+
+
+  )
+
 )
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-     <RouterProvider router={router}/>
-    
-  </React.StrictMode>,
+    <RouterProvider router={router} />
+
+  </React.StrictMode>
 )

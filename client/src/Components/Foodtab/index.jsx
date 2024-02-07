@@ -23,13 +23,7 @@ const MobileTabs = () => {
             icon :<BiDrink />,
            
         },
-        {
-            id : "Nutrition",
-            icon :<LiaAppleAltSolid />,
-          
-        },
-]
- 
+    ]
 const {type} = useParams() 
 
     return (
