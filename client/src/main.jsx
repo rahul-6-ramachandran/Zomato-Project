@@ -16,6 +16,7 @@ import Master from './Components/master.jsx'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import RestaurantLayoutHOC from './HOC/Restaurant.Hoc.jsx'
+import Temp from './Components/temp.jsx'
 
 
 
@@ -35,7 +36,9 @@ const router = createBrowserRouter(
         <Route path='/:type' element={<Master />} />
 
       </Route>
-      <Route path='/restaurant/:id' element={<RestaurantLayoutHOC />} />
+      <Route path='/restaurant/:id' element={<RestaurantLayoutHOC />}>
+        <Route path='/restaurant/:id/:route' element={<Temp/>}></Route>
+      </Route>
     </Route>
 
 

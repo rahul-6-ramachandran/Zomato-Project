@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 
 import RestaurantLayout from "../Layout/Restaurant.layout";
+import Temp from "../Components/temp";
 
 
 // Layout
@@ -12,7 +13,7 @@ const RestaurantLayoutHOC = ()=>{
         <>
          <div className="container mx-auto px-4 lg:px-20">
       
-         <RestaurantLayout/> 
+         <RestaurantLayout><Temp/></RestaurantLayout>
     </div>
                   
             
