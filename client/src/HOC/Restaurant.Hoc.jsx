@@ -1,7 +1,8 @@
-import { Outlet } from "react-router-dom";
+import { Outlet,useLocation, useParams } from "react-router-dom";
 
 import RestaurantLayout from "../Layout/Restaurant.layout";
 import Temp from "../Components/temp";
+import Overview from "../Pages/Restaurant/Overview";
 
 
 // Layout
@@ -9,11 +10,18 @@ import Temp from "../Components/temp";
 
 
 const RestaurantLayoutHOC = ()=>{
+    const {id} = useParams
+  
     return(
         <>
          <div className="container mx-auto px-4 lg:px-20">
       
-         <RestaurantLayout><Temp/></RestaurantLayout>
+         <RestaurantLayout>
+            
+      
+            </RestaurantLayout>
+            <Outlet/>
+         
     </div>
                   
             

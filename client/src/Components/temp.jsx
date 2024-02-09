@@ -1,8 +1,16 @@
+import { useLocation } from "react-router-dom"
+import Overview from "../Pages/Restaurant/Overview"
 
 
-function Temp() {
+function Temp(props) {
+  
+  const loc = useLocation()
   return (
-    <div>Hello Buddy</div>
+    <>
+    Hello Buddy
+   {loc.pathname}
+    </>
+    
   )
 }
 
