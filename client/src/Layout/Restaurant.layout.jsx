@@ -19,16 +19,19 @@ function Restaurantlayout(props) {
                 "https://b.zmtcdn.com/data/pictures/9/19316849/179f84a55b08488f02ead379bb80e7ea.jpeg",
                 "https://b.zmtcdn.com/data/pictures/9/19316849/179f84a55b08488f02ead379bb80e7ea.jpeg"]} />
 
-         <RestaurantInfo name="Thaal Kitchen" rating="4.3" deliveryRating="129K" cuisine="Kerala, South Indian, Chinese, Fast Food, Juices, Shake, Beverages" address="Palarivattom, Kochi" /> 
-          <div className="hidden md:flex flex-wrap gap-2">
+      <div className="z-50 bg-white md:top-0 top-20 sticky">
+      <RestaurantInfo name="Thaal Kitchen" rating="4.3" deliveryRating="129K" cuisine="Kerala, South Indian, Chinese, Fast Food, Juices, Shake, Beverages" address="Palarivattom, Kochi" /> 
+          <div className="hidden  md:flex flex-wrap gap-2 ">
           <InfoButtons icon={<MdOutlineDirections/>} title="Direction"/>
           <InfoButtons icon={<CiBookmarkPlus/>} title="Bookmark"/>
           <InfoButtons icon={<PiShareFatLight/>} title="Share"/>
           </div>
           
         <div><TabContainer/></div>
+        </div>
           {props.children}
        
+     
 
         </>
     )

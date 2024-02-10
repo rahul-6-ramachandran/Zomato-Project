@@ -2,8 +2,10 @@ import { FaCaretRight } from "react-icons/fa"
 import { Link, useParams } from "react-router-dom"
 import MenuCollection from "../../Components/restaurant/menuCollection"
 import ReviewCard from "../../Components/restaurant/Reviews/reviewCard"
-import { MapContainer, TileLayer, useMap,Marker,Popup } from 'react-leaflet'
-import 'leaflet/dist/leaflet.css'
+import MapView from "../../Components/restaurant/mapView"
+
+
+
 function Overview() {
     const { id } = useParams()
     return (
@@ -39,44 +41,31 @@ function Overview() {
                             <span className="text-xl font-light border border-gray-300 py-2 px-3 rounded-full text-gray-500 font-normal">Kerala</span>
                         </div>
                     </div>
+                    <div className=" md:hidden w-full  flex flex-col gap-4">
+                    <MapView />
+
+                    </div>
                     <div className="flex flex-col gap-8 my-5">
                         <ReviewCard />
                         <ReviewCard />
                         <ReviewCard />
                     </div>
-
-
+                    
+                  
+                
+                    
 
 
                 </div>
 
 
                 <aside style={{ height: "fit-content" }}
-                    className="hidden md:block md:w-2/5 sticky top-2  p-2 shadow-md rounded-lg"
+                    className="hidden md:block md:w-2/5 sticky top-80   p-5 shadow-md rounded-lg"
                 >
-
-                    <div>
-                        <h4 className="md:text-2xl font-normal text-lg my-4">Call</h4>
-                        <h4 className="md:text-2xl font-normal text-lg my-4 text-zomato-400">+917994777748</h4>
-                    </div>
-                    <div>
-                        <h4 className="md:text-2xl font-normal text-lg my-4">Direction</h4>
-                        <div className="w-full h-40">
-                        <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
-  <TileLayer
-    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-  />
-  <Marker position={[51.505, -0.09]}>
-    <Popup>
-      A pretty CSS3 popup. <br /> Easily customizable.
-    </Popup>
-  </Marker>
-</MapContainer>
-                        </div>
-                    </div>
+                    <MapView />
                 </aside>
             </div>
+           
         </>
     )
 }

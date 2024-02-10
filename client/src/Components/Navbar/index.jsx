@@ -55,7 +55,7 @@ const MobileNav = ()=>{
 }
 const LargeNav = () => {
     return (<>
-    <div className="container px-20 mx-auto">
+    <div className="container px-20 mx-auto ">
         <div className="hidden lg:flex lg:w-3/4 gap-2 justify-between">
             <div className="w-32 p-2" >
                 <img src="https://b.zmtcdn.com/web_assets/b40b97e677bc7b2ca77c58c61db266fe1603954218.png"
@@ -94,7 +94,7 @@ const LargeNav = () => {
         function Navbar() {
   return (
         <>
-            <nav className="px-4 py-4  items-center w-full bg-white shadow-md">
+            <nav className="px-4 py-4  items-center w-full bg-white shadow-md sticky md:relative top-0 z-40">
                 <div className="md:hidden">
                     <MobileNav />
                 </div>

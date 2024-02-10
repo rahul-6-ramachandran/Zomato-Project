@@ -18,6 +18,7 @@ import "slick-carousel/slick/slick-theme.css";
 import RestaurantLayoutHOC from './HOC/Restaurant.Hoc.jsx'
 import Temp from './Components/temp.jsx'
 import Overview from './Pages/Restaurant/Overview.jsx'
+import OrderOnline from './Pages/Restaurant/OrderOnline.jsx'
 
 
 
@@ -38,8 +39,8 @@ const router = createBrowserRouter(
       </Route>
       <Route path='/restaurant/:id' element={<RestaurantLayoutHOC />} >
         <Route index path='/restaurant/:id/overview' element={<Overview />} />
-        <Route path='/restaurant/:id/reviews' element={<Temp/>} />
-        <Route path='/restaurant/:id/order' element={<Temp/>}/>
+        <Route path='/restaurant/:id/reviews' element={<OrderOnline/>} />
+        <Route path='/restaurant/:id/order' element={<OrderOnline/>}/>
         <Route path='/restaurant/:id/book' element={<Temp/>}/>
         <Route path='/restaurant/:id/menu' element={<Temp/>}/> 
         <Route path='/restaurant/:id/photos' element={<Temp/>} /> 
