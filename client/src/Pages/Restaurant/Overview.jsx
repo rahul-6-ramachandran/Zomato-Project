@@ -19,7 +19,7 @@ function Overview() {
                         <Link to={`/restaurant/${id}/menu`}> <span className="text-zomato-300 items-center flex flex-wrap">See all Menus <FaCaretRight /></span></Link>
                     </div>
                     <div className="flex flex-wrap gap-3 ">
-                        <MenuCollection image="https://b.zmtcdn.com/data/menus/430/900430/bcec2c7bd8e28db95e4b0e357c55c5c5.jpg?" menuTitle="Menu" pages="3" />
+                        <MenuCollection images={["https://b.zmtcdn.com/data/menus/430/900430/bcec2c7bd8e28db95e4b0e357c55c5c5.jpg?","https://b.zmtcdn.com/data/menus/430/900430/bcec2c7bd8e28db95e4b0e357c55c5c5.jpg?"]} menuTitle="Menu" pages="3" />
                     </div>
                     <div className="flex flex-col py-5">
                         <h4 className="md:text-2xl font-normal text-lg my-4">Cuisine</h4>

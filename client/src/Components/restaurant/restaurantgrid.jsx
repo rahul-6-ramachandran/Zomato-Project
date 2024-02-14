@@ -19,7 +19,7 @@ function RestaurantGrid(props) {
                     <div className='w-full h-full relative'>
                         <img className='w-full h-full transform transition duration-500 hover:scale-110' src={props.images[4]} alt="" />
                         <div className='w-full h-full absolute bg-black bg-opacity-40 inset-0 ' />
-                        <h4 className='absolute text-center w-full h-full inset-y-2/4 z-10 font-semibold text-white text-xl'>View Gallery</h4>
+                        <h4 className='absolute text-center w-full h-full inset-y-2/4 z-5 font-semibold text-white text-xl'>View Gallery</h4>
                     </div>
                 </div>
             </div>

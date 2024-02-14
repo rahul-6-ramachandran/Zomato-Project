@@ -7,8 +7,8 @@ import FoodList from "../../Components/restaurant/orderOnline/foodList"
 function OrderOnline() {
   return (
     <>
-      <div className="w-full mt-4 flex">
-        <aside className="hidden md:flex flex-col w-1/5 sticky top-80  border-r border-gray-200 h-screen py-5">
+      <div className="w-full mt-4 flex ">
+        <aside className="hidden md:flex flex-col w-1/5 sticky top-96 -z-20 border-r border-gray-200 h-screen py-5">
 
           <MenuContainer />
           <MenuContainer />
