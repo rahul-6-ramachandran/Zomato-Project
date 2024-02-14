@@ -1,4 +1,5 @@
 import ReactStars from 'react-rating-stars-component'
+import { FaPlus } from "react-icons/fa6"
 function FoodItem(props) {
   return (
     <>
@@ -11,6 +12,9 @@ function FoodItem(props) {
             <p className="text-gray-500 font-regular md:text-xl">{props.price}</p>
             <ReactStars count={5} value={props.rating}/>
             <p className="text-gray-500 font-regular md:text-xl">{props.description}</p>
+        </div>
+        <div className='border border-2 py-2 px-1 border-zomato-200 rounded-2xl' >
+          <button className='flex items-center gap-1 text-zomato-300'>Add <FaPlus/></button>
         </div>
 
       </div>

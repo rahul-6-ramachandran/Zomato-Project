@@ -7,6 +7,7 @@ import RestaurantInfo from '../Components/restaurant/restaurantinfo'
 import InfoButtons from "../Components/restaurant/infobuttons"
 import TabContainer from "../Components/restaurant/tabs"
 import Temp from "../Components/temp"
+import CartContainer from "../Components/Cart/CartContainer"
 
 function Restaurantlayout(props) {
     return (
@@ -31,7 +32,7 @@ function Restaurantlayout(props) {
         </div>
           {props.children}
        
-     
+        <CartContainer/>
 
         </>
     )

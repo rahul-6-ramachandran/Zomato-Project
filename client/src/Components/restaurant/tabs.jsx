@@ -46,11 +46,7 @@ function TabContainer() {
         path: "menu",
         isActive : currentLocation.includes('menu')
     },
-    {
-        title:"Book a Table",
-        path: "book",
-        isActive : currentLocation.includes('book')
-    }
+ 
 ]
     
   return (

@@ -44,7 +44,7 @@ const router = createBrowserRouter(
         <Route index path='/restaurant/:id/overview' element={<Overview />} />
         <Route path='/restaurant/:id/reviews' element={<Reviews/>} />
         <Route path='/restaurant/:id/order' element={<OrderOnline/>}/>
-        <Route path='/restaurant/:id/book' element={<Temp/>}/>
+
         <Route path='/restaurant/:id/menu' element={<Menu/>}/> 
         <Route path='/restaurant/:id/photos' element={<Photos/>} /> 
         </Route>
