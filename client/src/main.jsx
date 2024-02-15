@@ -22,6 +22,8 @@ import OrderOnline from './Pages/Restaurant/OrderOnline.jsx'
 import Reviews from './Pages/Restaurant/Reviews.jsx'
 import Menu from './Pages/Restaurant/Menu.jsx'
 import Photos from './Pages/Restaurant/Photos.jsx'
+import Checkout from './Pages/checkout.jsx'
+import CheckoutLayoutHOC from './HOC/Checkout.HOC.jsx'
 
 
 
@@ -47,6 +49,9 @@ const router = createBrowserRouter(
 
         <Route path='/restaurant/:id/menu' element={<Menu/>}/> 
         <Route path='/restaurant/:id/photos' element={<Photos/>} /> 
+        </Route>
+        <Route path='/checkout' element={<CheckoutLayoutHOC/>}>
+           
         </Route>
         {/* />
       
