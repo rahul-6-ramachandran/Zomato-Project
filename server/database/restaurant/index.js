@@ -21,4 +21,4 @@ const restaurantSchema = new mongoose.Schema({
     reviews: [{type:mongoose.Types.ObjectId, ref:"Reviews"}]
 },{timestamps:true})
 
-export const restaurantModel = new mongoose.model("Restaurants",restaurantSchema)
+export const restaurantModel =  mongoose.model("Restaurants",restaurantSchema)

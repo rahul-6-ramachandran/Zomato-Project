@@ -1,5 +1,18 @@
+import { useEffect, useState } from "react"
 import { FaStar } from "react-icons/fa"
+import { useDispatch } from "react-redux"
+import { getImage } from "../Redux/Reducer/image/image.action"
 function RestaurantCards(props) {
+    const [image,setImage] = useState({    images : [{ location:""}]
+    })
+    const dispatch = useDispatch()
+
+    useEffect(()=>{
+        props.photos && dispatch(getImage(props.photos)).then((data) => setImage(data.payload.image))
+            
+       
+
+    },[props.photos])
     return (
         <>
           
@@ -8,7 +21,7 @@ function RestaurantCards(props) {
                        {props.isOff && <div className="absolute px-3  bg-sky-600">
                         <span className="text-white">{props.isOff}% OFF</span>
                         </div>}
-                        <img src={props.photos.length && props.photos[0]} alt="" className='w-full h-full rounded-xl' />
+                        <img src={image.images[0] && image.images[0].location} alt="" className='w-full h-full rounded-xl' />
                     </div>
                     <div>
                         <div className='flex flex-wrap justify-between my-3 '>

@@ -1,24 +1,15 @@
 // Components
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import RestaurantCards from "../RestaurantCards"
 import Brand from "./Brand"
 import DeliveryCarousals from "./DeliveryCarousals"
+import { useSelector } from "react-redux"
 function Delivery() {
-    const [restaurantList,setRestaurantList] = useState([
-        {
-            id:123556,
-            photos : ["https://b.zmtcdn.com/data/pictures/6/19008406/2137031075da5e1625f5e0ebc54fb78f_o2_featured_v2.jpeg?output-format=webp"],
-            cuisine : ["Biryani", "Kerala", "South Indian", "Arabian", "Shake", "Juices"],
-            name : "Mehfil Biriyani",
-            averageCost : 100,
-            isOff : 80,
-            duration : 16,
-            rating : 4.1
-
-
-        },
-        
-    ])
+    const [restaurantList,setRestaurantList] = useState([])
+    const reduxState = useSelector((globalStore)=> globalStore.restaurant.restaurants)
+    useEffect(()=>{
+        reduxState.restaurants && setRestaurantList(reduxState.restaurants)
+    },[reduxState.restaurants])
   return (
     <div className="container  md:px-20 md:mx-auto">
         <DeliveryCarousals/>

@@ -19,6 +19,7 @@ import Food from './API/Food'
 import Orders from './API/Orders'
 import Reviews from './API/Orders'
 import User from './API/User'
+import Image from './API/Image'
 
 // Database Connection
 import connectDB from './database/connection'
@@ -48,6 +49,7 @@ routeConfig(passport)
 zomato.use('/auth',Auth)
 zomato.use('/restaurant',Restaurant)
 zomato.use('/food',Food)
+zomato.use('/image',Image)
 zomato.use('/order',Orders)
 zomato.use('/review',Reviews)
 zomato.use('/user',User)
