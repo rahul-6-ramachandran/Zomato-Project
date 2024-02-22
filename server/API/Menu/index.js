@@ -21,7 +21,7 @@ Router.get('/list/:_id',async (req,res)=>{
     try {
         await validateId(req.params)
         const {_id} = req.params
-        const menu = await menuModel.findOne({_id})
+        const menu = await menuModel.findById(_id)
 
         return res.json({menu})
         

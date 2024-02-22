@@ -1,16 +1,40 @@
+import { useDispatch, useSelector } from "react-redux"
 import { FaCaretRight } from "react-icons/fa"
 import { Link, useParams } from "react-router-dom"
 import MenuCollection from "../../Components/restaurant/menuCollection"
 import ReviewCard from "../../Components/restaurant/Reviews/reviewCard"
 import MapView from "../../Components/restaurant/mapView"
 
+import { getReviews } from "../../Redux/Reducer/review/reviewSlice"
+import { useEffect, useState } from "react"
+import { getImage } from "../../Redux/Reducer/image/imageSlice"
 
 
 function Overview() {
+    const [menuImages,setMenuImages] = useState({images:[]})
+    const [reviews,setReviews] = useState([])
+
     const { id } = useParams()
+    const reduxState = useSelector((globalStore)=> globalStore.restaurants.selectedRestaurant)
+    const dispatch = useDispatch()
+    useEffect(()=>{
+        if(reduxState){
+            dispatch(getImage(reduxState?.menuImages)).then((data)=>{
+                const images = []
+                data.payload.image.image.map(({location})=>images.push(location))
+                setMenuImages(images)
+        })
+        dispatch(getReviews(reduxState?._id).then(data => setReviews(data.reviews) ))
+        }
+       
+    },[])
+
+    const getLatLong = (mapAddress)=>{
+        return mapAddress?.split(",").map((item)=> parseFloat(item))
+    }
     return (
         <>
-            <div className="flex flex-col md:flex-row relative gap-3">
+            <div className="flex flex-col md:flex-row gap-3">
                 <div className="bg-white  w-full ">
                     <h2 className="md:text-3xl font-medium text-lg my-5">About this place</h2>
                     <div className="flex flex-wrap justify-between my-4 py-3 items-center">
@@ -18,7 +42,7 @@ function Overview() {
                         <h4 className="md:text-2xl font-normal text-lg my-3">Menu</h4>
                         <Link to={`/restaurant/${id}/menu`}> <span className="text-zomato-300 items-center flex flex-wrap">See all Menus <FaCaretRight /></span></Link>
                     </div>
-                    <div className="flex flex-wrap gap-3 ">
+                    <div className="flex flex-wrap gap-3  ">
                         <MenuCollection images={["https://b.zmtcdn.com/data/menus/430/900430/bcec2c7bd8e28db95e4b0e357c55c5c5.jpg?","https://b.zmtcdn.com/data/menus/430/900430/bcec2c7bd8e28db95e4b0e357c55c5c5.jpg?"]} menuTitle="Menu" pages="3" />
                     </div>
                     <div className="flex flex-col py-5">
@@ -45,12 +69,12 @@ function Overview() {
                     <MapView />
 
                     </div>
-                    <div className="flex flex-col gap-8 my-5">
-                        <ReviewCard />
-                        <ReviewCard />
-                        <ReviewCard />
+                    {reviews.map((reviewdata)=>(
+                    <div key={reviewdata.id} className="flex flex-col gap-8 my-5">
+                        <ReviewCard {...reviewdata}/>
+                       
                     </div>
-                    
+                     ))}
                   
                 
                     

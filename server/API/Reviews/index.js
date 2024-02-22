@@ -9,6 +9,25 @@ import { validateId } from '../../Validation/food';
 const Router = express.Router()
 
 
+
+/*
+Route       /new
+Des         Get all reviews
+Params      restaurant_id
+Access      Public
+Method      GET
+*/
+Router.get('/:id',async (req,res)=>{
+    try {
+        const reviews = await reviewModel.find({restaurant:req.params.id})
+        await reviewModel.create({reviewData})
+        return res.json({rreviews})
+    } catch (error) {
+        return res.status(500).json({error:error.message})
+    }
+})
+
+
 /*
 Route       /new
 Des         Add new Review
@@ -16,11 +35,12 @@ Params      none
 Access      Public
 Method      POST
 */
-Router.post('/new',async (req,res)=>{
+Router.post('/new',passport.authenticate("jwt") ,async (req,res)=>{
     try {
-        await validateReview(req.body)
+        const {_id}= req.session.passport.user._doc
+
         const {reviewData} = req.body
-        await reviewModel.create({reviewData})
+        await reviewModel.create({...reviewData,user:_id})
         return res.json({review:"Successfully Updated Review"})
     } catch (error) {
         return res.status(500).json({error:error.message})

@@ -1,14 +1,29 @@
 import { Dialog, Transition } from '@headlessui/react'
-import { Fragment,} from 'react'
+import { Fragment, useState,} from 'react'
 import { FcGoogle } from "react-icons/fc"
+import { useDispatch } from 'react-redux'
+import { signIn } from '../../Redux/Reducer/Auth/AuthSlice'
 
 export default function SignIn({isOpen, setIsOpen}) {
   
+  const [userData,setUserData] = useState({
+    email:"",
+    password:""
+  })
+  const dispatch = useDispatch()
+  const handleChange = (e)=> setUserData((prev) =>({...prev, [e.target.name]: e.target.value}))
 
   function closeModal() {
+    
     setIsOpen(false)
   }
 
+const submit = ()=> {
+  setUserData({
+    email:"",
+    password:""
+  })
+  dispatch(signIn(userData))}
 
   return (
     <>
@@ -46,16 +61,16 @@ export default function SignIn({isOpen, setIsOpen}) {
                     <form action="">
                         <div className='flex w-full flex-col gap-2'>
                             <label htmlFor="email">Email</label>
-                            <input type="email" id='email' placeholder='email@email.com'
+                            <input type="email" id='email' onChange={handleChange} name="email" value={userData.email} placeholder='email@email.com'
                             className='w-full border border-gray-400 px-3 py-2 rounded-lg  focus:outline' />
 
                         </div>
                         <div className='flex w-full flex-col gap-2'>
                             <label htmlFor="password">Password</label>
-                            <input type="password" id='password' placeholder='*******'
+                            <input type="password"  name="password"  onChange={handleChange} id='password' value={userData.password} placeholder='*******'
                             className='w-full border border-gray-400 px-3 py-2 rounded-lg  focus:outline' />
                           
-                          <div className="w-full bg-zomato-400 text-white py-3 rounded-lg text-center">
+                          <div className="w-full bg-zomato-400 text-white py-3 rounded-lg text-center" onClick={submit}>
                         Sign In
                    
                    </div>

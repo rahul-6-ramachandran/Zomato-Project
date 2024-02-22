@@ -51,7 +51,7 @@ zomato.use('/restaurant',Restaurant)
 zomato.use('/food',Food)
 zomato.use('/image',Image)
 zomato.use('/order',Orders)
-zomato.use('/review',Reviews)
+zomato.use('/reviews',Reviews)
 zomato.use('/user',User)
 
 zomato.get('/',(req,res)=>{

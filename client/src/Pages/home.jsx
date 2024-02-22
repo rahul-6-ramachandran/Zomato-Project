@@ -7,7 +7,7 @@ import NightLife from "../Components/NightLifte/index"
 
 // Redux actions
 
-import { getRestaurant } from "../Redux/Reducer/restaurant/restaurant.action"
+import { getRestaurant } from "../Redux/Reducer/restaurant/restaurantSlice"
 import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 

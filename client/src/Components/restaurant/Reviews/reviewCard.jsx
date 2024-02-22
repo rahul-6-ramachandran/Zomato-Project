@@ -1,5 +1,14 @@
 import { FaStar } from "react-icons/fa"
-function ReviewCard() {
+import { useDispatch } from "react-redux"
+import { getUser } from "../../../Redux/Reducer/user/userSlice"
+import { useEffect, useState } from "react"
+import dayjs from "dayjs"
+function ReviewCard(props) {
+  const [user,setUSer] = useState({})
+  const dispatch = useDispatch()
+  useEffect(()=>{
+      dispatch(getUser(props.user)).then(data=>setUSer(data.payload.user.user.user) )
+  },[])
   return (
     <>
      <div className="flex flex-col gap-3">
@@ -10,7 +19,7 @@ function ReviewCard() {
             </div>
          
             <div className="flex flex-col gap-1">
-                <h3 className="font-medium text-xl  ">Justus Rahndel Moncherry</h3>
+                <h3 className="font-medium text-xl  ">{user?.fullname}</h3>
                 <p>30 reviews &#x2022; </p>
             </div>
             </div>
@@ -19,12 +28,12 @@ function ReviewCard() {
         <div>
             <div className="flex items-center gap-3  mx-2">
                 <span className="text text-white bg-green-600 flex items-center gap-1 rounded-lg px-2 py-1 items-center">1 <FaStar/></span>
-                <h5 className="font-regular uppercase">Delivery</h5>
-                <small className="text-gray-400">3 days ago</small>
+                <h5 className="font-regular uppercase">{props.isRestaurantReview ? "Dining" : "Delivery"}</h5>
+                <small className="text-gray-400">{dayjs(props.createdAt).format("DD MM YYYY")}</small>
             </div>
         </div>
         <div>
-            <p className="text-xl text-gray-500 ">I ordered this sushi plater and specifically stated that i want non veg only and they literally send me a veg only platter</p>
+            <p className="text-xl text-gray-500 ">{props.reviewText}</p>
         </div>
      </div>
     </>

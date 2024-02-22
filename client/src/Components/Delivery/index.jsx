@@ -6,7 +6,8 @@ import DeliveryCarousals from "./DeliveryCarousals"
 import { useSelector } from "react-redux"
 function Delivery() {
     const [restaurantList,setRestaurantList] = useState([])
-    const reduxState = useSelector((globalStore)=> globalStore.restaurant.restaurants)
+    const reduxState = useSelector((globalStore)=> globalStore.restaurants.restaurants)
+    console.log(reduxState)
     useEffect(()=>{
         reduxState.restaurants && setRestaurantList(reduxState.restaurants)
     },[reduxState.restaurants])

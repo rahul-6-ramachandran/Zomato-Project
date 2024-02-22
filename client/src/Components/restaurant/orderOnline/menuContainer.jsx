@@ -3,16 +3,11 @@ import MenuCategory from "./menuCategory"
 
 
 function MenuContainer(props) {
-    const [selected,setSelected] = useState("")
-    const onClickHandler = (e)=>{
-        if(e.target.id){
-            setSelected(e.target.id)
-        }
-        return
-    }
+ 
+   
   return (
     <div className="w-full">
-        <MenuCategory name="Recommended" items={["",""]} onClickHandler={onClickHandler}  isActive={selected==="Recommended"}/>
+        <MenuCategory name={props.name} items={props.items} onClickHandler={props.onClickHandler}  isActive={props.selected===props.name}/>
         
 
     </div>

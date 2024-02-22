@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import { FaStar } from "react-icons/fa"
 import { useDispatch } from "react-redux"
-import { getImage } from "../Redux/Reducer/image/image.action"
+import { getImage } from "../Redux/Reducer/image/imageSlice"
+import { Link } from "react-router-dom"
 function RestaurantCards(props) {
     const [image,setImage] = useState({    images : [{ location:""}]
     })
@@ -15,7 +16,7 @@ function RestaurantCards(props) {
     },[props.photos])
     return (
         <>
-          
+          <Link to={`/restaurant/${props._id}`} className="w-full">
                 <div className='flex flex-col gap-3 bg-white p-3 w-full md:w-1/2 lg:w-1/3 transition duration-500 ease-in-out hover:shadow-2xl rounded-xl'>
                     <div className='w-50 h-50 relative'>
                        {props.isOff && <div className="absolute px-3  bg-sky-600">
@@ -52,7 +53,7 @@ function RestaurantCards(props) {
 
                     <p></p>
                 </div>
-
+                </Link>
         
         </>
 

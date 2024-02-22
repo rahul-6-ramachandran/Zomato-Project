@@ -24,9 +24,15 @@ import Menu from './Pages/Restaurant/Menu.jsx'
 import Photos from './Pages/Restaurant/Photos.jsx'
 import Checkout from './Pages/checkout.jsx'
 import CheckoutLayoutHOC from './HOC/Checkout.HOC.jsx'
-
+import Redirectrestaurant from './Pages/Restaurant/Redirect.jsx'
 import { Provider } from 'react-redux'
 import store from './Redux/store.js'
+import axios from 'axios'
+
+if(localStorage.zomatoUser){
+  const {token } = JSON.parse(localStorage.zomatoUser)
+  axios.defaults.headers.common["Authorization"]= `Bearer ${token}`
+}
 const router = createBrowserRouter(
   createRoutesFromElements(
 
@@ -44,7 +50,11 @@ const router = createBrowserRouter(
         <Route path='/:type' element={<Master />} />
 
       </Route>
-      <Route path='/restaurant/:id' element={<RestaurantLayoutHOC />} >
+      <Route path='/restaurant/:id' element={<RestaurantLayoutHOC/>} >
+      <Route
+        path="/restaurant/:id"
+        element={<Redirectrestaurant/>}
+    />
         <Route index path='/restaurant/:id/overview' element={<Overview />} />
         <Route path='/restaurant/:id/reviews' element={<Reviews/>} />
         <Route path='/restaurant/:id/order' element={<OrderOnline/>}/>
