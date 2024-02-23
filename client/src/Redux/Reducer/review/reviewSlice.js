@@ -3,7 +3,7 @@ import axios from "axios";
 
  
 const INITIAL_STATE = {
-    reviews:[]
+    reviews:{}
 }
 
 export const getReviews = createAsyncThunk('reviews/getReviews',async(res_id)=>{
@@ -19,8 +19,8 @@ export const getReviews = createAsyncThunk('reviews/getReviews',async(res_id)=>{
 export const postReviews = createAsyncThunk('reviews/postReviews',async(reviewData)=>{
     await axios({
         method:"POST",
-        url:`http://localhost:4000/reviews/new`
-
+        url:"http://localhost:4000/reviews/new",
+        data : {reviewData}
     })
 }) 
 
@@ -39,8 +39,7 @@ const reviewSlice = createSlice({
         })
         builders.addCase(postReviews.fulfilled,(state,action)=>{
             return{
-                ...state,
-                reviews : [...state.reviews,action.payload]
+                ...state
             }
         })
     }

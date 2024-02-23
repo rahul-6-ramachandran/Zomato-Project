@@ -17,8 +17,8 @@ export const postImage = createAsyncThunk('images/postImage',async(_id)=>{
     
         await axios({
             method:"POST",
-            url:`http://localhost:4000/image/${_id}`
-
+            url:`http://localhost:4000/image/${_id}`,
+            data : {photo}
         })
     })
 

@@ -9,7 +9,16 @@ const userSchema = new mongoose.Schema({
     password : {type : String},
     address : [{detail : {type : String},for : {type:String}}],
     phoneNumber : [{type:Number}]
-},{timestamps:true})
+},{timestamps:true},
+
+{
+    methods: {
+        getjwtToken(){
+            return jwt.sign({user:this._id.toString()},"zomatoApp")
+        }
+    }
+}
+)
 
 userSchema.methods.getjwtToken = function(){
     return jwt.sign({user:this._id.toString()},"zomatoApp")

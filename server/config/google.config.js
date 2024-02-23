@@ -12,10 +12,9 @@ import googleOAuth from "passport-google-oauth20"
 
         clientID : process.env.GOOGLE_CLIENT_ID,
         clientSecret : process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL : "http://localhost:4000/auth/google/callback",
-        passReqToCallback   : true,
+        callbackURL : "http://localhost:4000/auth/google/callback"
         
-    },async (accessToken,refreshToken,profile,done)=>{
+    },async (req,accessToken,refreshToken,profile,done)=>{
         
         // Creating a new user object ///////
 
@@ -27,27 +26,28 @@ import googleOAuth from "passport-google-oauth20"
         try {
             const user = await userModel.findOne({email:newUser.email})
             
-            
+         
+
 
             // Checking if the user exists or not ////////
 
             if(user){
                 const token = await user.getjwtToken()
+                
                 done(null,{user,token})
             }else{
                 const user = await userModel.create(newUser)
 
-                const token = await user.getjwtToken()
-
+                const token = await user.getJWTtoken()
                 done(null,{user,token})    
             }
         } catch (error) {
             done(error,null)
         }
-
+    }))
         // Decoding the data recieved from passport ///////
 
     passport.serializeUser((userData,done)=> done(null,{...userData}))
     passport.deserializeUser((id,done)=> done(null,id))
-    }))
+   
  }

@@ -70,7 +70,7 @@ Method      Get
 */
 
 Router.get('/google',passport.authenticate("google",{scope:
-    ['profile',
+    ['https://www.googleapis.com/auth/userinfo.profile',
     'email']
 }))
 

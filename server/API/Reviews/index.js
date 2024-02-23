@@ -20,8 +20,7 @@ Method      GET
 Router.get('/:id',async (req,res)=>{
     try {
         const reviews = await reviewModel.find({restaurant:req.params.id})
-        await reviewModel.create({reviewData})
-        return res.json({rreviews})
+        return res.json({reviews})
     } catch (error) {
         return res.status(500).json({error:error.message})
     }
@@ -35,12 +34,14 @@ Params      none
 Access      Public
 Method      POST
 */
-Router.post('/new',passport.authenticate("jwt") ,async (req,res)=>{
+Router.post('/new' ,passport.authenticate("jwt"),async (req,res)=>{
     try {
-        const {_id}= req.session.passport.user._doc
+        // const {_id}= req.session.passport.user._doc
 
         const {reviewData} = req.body
-        await reviewModel.create({...reviewData,user:_id})
+        console.log(req.session)
+        console.log(req.body)
+        await reviewModel.create({...reviewData})
         return res.json({review:"Successfully Updated Review"})
     } catch (error) {
         return res.status(500).json({error:error.message})

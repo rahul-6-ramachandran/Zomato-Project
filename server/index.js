@@ -17,7 +17,7 @@ import Auth from './API/Auth'
 import Restaurant from './API/Restaurant'
 import Food from './API/Food'
 import Orders from './API/Orders'
-import Reviews from './API/Orders'
+import Reviews from './API/Reviews'
 import User from './API/User'
 import Image from './API/Image'
 

@@ -24,7 +24,7 @@ function Overview() {
                 data.payload.image.image.map(({location})=>images.push(location))
                 setMenuImages(images)
         })
-        dispatch(getReviews(reduxState?._id).then(data => setReviews(data.reviews) ))
+        dispatch(getReviews(reduxState?._id)).then(data => setReviews(data.reviews) )
         }
        
     },[])
@@ -69,7 +69,7 @@ function Overview() {
                     <MapView />
 
                     </div>
-                    {reviews.map((reviewdata)=>(
+                    {reviews?.map((reviewdata)=>(
                     <div key={reviewdata.id} className="flex flex-col gap-8 my-5">
                         <ReviewCard {...reviewdata}/>
                        
