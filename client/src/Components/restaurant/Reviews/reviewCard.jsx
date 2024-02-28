@@ -4,10 +4,10 @@ import { getUser } from "../../../Redux/Reducer/user/userSlice"
 import { useEffect, useState } from "react"
 import dayjs from "dayjs"
 function ReviewCard(props) {
-  const [user,setUSer] = useState({})
+  const [user,setUSer] = useState("")
   const dispatch = useDispatch()
   useEffect(()=>{
-      dispatch(getUser(props.user)).then(data=>setUSer(data.payload.user.user.user) )
+      dispatch(getUser(props.user)).then(data=>setUSer(data.payload.user.fullname) )
   },[])
   return (
     <>
@@ -15,11 +15,11 @@ function ReviewCard(props) {
         <div className=" flex items-center justify-between ">
           <div className="flex items-center gap-3">
           <div className="w-14 h-14 rounded-full " >
-                <img className="w-full h-full rounded-full object-cover" src="https://b.zmtcdn.com/data/user_profile_pictures/aa7/dbfe90a563f477473dbac1a83a8c8aa7.jpg" alt="" />
+                <img className="w-full h-full rounded-full object-cover" src={user} alt="" />
             </div>
          
             <div className="flex flex-col gap-1">
-                <h3 className="font-medium text-xl  ">{user?.fullname}</h3>
+                <h3 className="font-medium text-xl  ">{user}</h3>
                 <p>30 reviews &#x2022; </p>
             </div>
             </div>

@@ -19,7 +19,9 @@ Method      GET
 */
 Router.get('/:id',async (req,res)=>{
     try {
-        const reviews = await reviewModel.find({restaurant:req.params.id})
+        // restaurant:req.params.id
+        const res_id = '65d870b15a07db9bfb0b6524'
+        const reviews = await reviewModel.find({restaurant:res_id})
         return res.json({reviews})
     } catch (error) {
         return res.status(500).json({error:error.message})
@@ -34,17 +36,20 @@ Params      none
 Access      Public
 Method      POST
 */
-Router.post('/new' ,passport.authenticate("jwt"),async (req,res)=>{
-    try {
-        // const {_id}= req.session.passport.user._doc
 
-        const {reviewData} = req.body
-        console.log(req.session)
-        console.log(req.body)
-        await reviewModel.create({...reviewData})
+// passport.authenticate("jwt")
+Router.post('/new', async (req,res)=>{
+    try {
+        // req.session.passport.user._doc
+        const _id=  '64ddf235afc4458d0839ab06'
+        const res_id = '65d870b15a07db9bfb0b6524'
+        
+        console.log(req.body.reviewData)
+        await reviewModel.create({...req.body.reviewData,user:_id,restaurant :res_id })
         return res.json({review:"Successfully Updated Review"})
     } catch (error) {
         return res.status(500).json({error:error.message})
+       
     }
 })
 

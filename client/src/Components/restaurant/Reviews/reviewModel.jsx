@@ -44,7 +44,10 @@ export default function ReviewModal({ isOpen, setIsOpen, ...props }) {
         isRestaurantReview : false,
         isFoodReview : false,
         rating : 0
-    })}
+    })
+
+    closeModal()
+ }
 
    
 

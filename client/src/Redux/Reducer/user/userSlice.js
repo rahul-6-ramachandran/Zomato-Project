@@ -34,8 +34,7 @@ const userSlice = createSlice({
     extraReducers : (builder)=>{
         builder.addCase(getUser.fulfilled,(state,action)=>{
             return {
-                ...state,
-                user : action.payload
+                ...state 
             }
         })
         builder.addCase(getmySelf.fulfilled,(state,action)=>{

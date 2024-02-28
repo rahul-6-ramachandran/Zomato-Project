@@ -15,7 +15,7 @@ function Reviews() {
     useEffect(()=>{
       if(reduxState){
          
-      dispatch(getReviews(reduxState?._id)).then(data => setReviews(data.reviews) )
+      dispatch(getReviews(reduxState?._id)).then(data =>  setReviews(data.payload.reviews) )
       }
      
   },[])
