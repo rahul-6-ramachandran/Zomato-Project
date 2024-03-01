@@ -1,10 +1,12 @@
-import { useState } from "react"
+import { useState ,useEffect} from "react"
 import ImageViewer from 'react-simple-image-viewer'
 import PhotosCollection from "../../Components/restaurant/photosCollection"
+import { useDispatch, useSelector } from "react-redux"
+import { getImage } from "../../Redux/Reducer/image/imageSlice"
 
 
 function Photos() {
-    const [photos,setPhotos] = useState(["https://b.zmtcdn.com/data/pictures/6/903046/aa0cbf0d85a8c2ec2e8ba68c925260a7.jpg","https://b.zmtcdn.com/data/pictures/chains/6/903046/facb92da5cde7510b6f6ac780308eb16.jpg","https://b.zmtcdn.com/data/pictures/chains/6/903046/ba2141d7b3ecbbdf2896c9b55a102804.jpg?"])
+    const [photos,setPhotos] = useState()
     const [isMenuOpen,setIsMenuOpen] = useState(false)
     const [currentImg,setCurrentImg] = useState(0)
     const closeViewer = ()=>{
@@ -14,6 +16,18 @@ function Photos() {
       setIsMenuOpen(true)
     }
 
+    const reduxState = useSelector((globalStore)=> globalStore.restaurants.selectedRestaurant)
+    const dispatch = useDispatch()
+    useEffect(()=>{
+      if(reduxState){
+          dispatch(getImage(reduxState?.photos)).then((data)=>{
+              const images = []
+              data.payload.images.images.map(({location})=>images.push(location))
+              setPhotos(images)
+      })
+      }
+     
+  },[])
   return (
     <>   {isMenuOpen && (
         <ImageViewer 
@@ -27,7 +41,7 @@ function Photos() {
     <div className="flex gap-3 my-4">
         {
             
-                photos.map((photo)=>(
+                photos?.map((photo)=>(
                     <PhotosCollection key={photo.id} image={photo} openViewer={openViewer}/>
                 ))
             

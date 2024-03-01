@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 const INITIAL_STATE = {
-    image:[]
+    images:[]
 }
 
 export const getImage = createAsyncThunk('images/fetchRestaurant', async (_id)=>{
@@ -31,13 +31,13 @@ const imageSlice = createSlice({
         builder.addCase(getImage.fulfilled,(state,action)=>{
           return{
             ...state,
-            image: action.payload
+            images: action.payload
           } 
         })
         builder.addCase(postImage.fulfilled,(state,action)=>{
             return{
                 ...state,
-                image : [...state.image,action.payload]
+                images : [...state.image,action.payload]
             }
           })
     }
